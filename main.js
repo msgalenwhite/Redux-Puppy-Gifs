@@ -84,15 +84,18 @@ const addGifToList = newPup => {
 
 // EXTRA FUNCTIONS NOT DIRECTLY RELATED TO REDUX
 const createDisplayDiv = () => {
-  // takes in an object with 2 keys: rating and url
-  // creates a div for the url
-  gifDiv = document.createElement('div')
+  displayDiv = document.createElement('div')
   
   // getState() gets the WHOLE state, and then you take what you want out of it
   store.getState().pups.forEach((pupObj) => {
+    gifDiv = document.createElement('div')
     gifDiv.append(createImageTag(pupObj))
+    text = `Rating: ${pupObj.rating} - ${store.getState().ratingDescriptions[pupObj.rating]}`
+    gifDiv.append(document.createTextNode(text))
+    gifDiv.className = 'gifDiv'
+    displayDiv.append(gifDiv)
   })
-  return gifDiv
+  return displayDiv
 }
 
 const createImageTag = pupObj => {
@@ -157,6 +160,13 @@ const render = () => {
   // this will happen on every page load and store update
   console.log(store.getState());
   
+  // this works if you want a lot of repeats (spoiler: I don't)
+  // gifList.append(createDisplayDiv())
+  
+  // this works, but is removing ALL of the gifs and adding ALL of them back.
+  // this seems very redundant.  Can't I just update the few that have changed?
+  // Or maybe this is why people use React :)
+  gifList.innerHTML = ''
   gifList.append(createDisplayDiv())
 }
 
