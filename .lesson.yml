@@ -1,0 +1,7 @@
+---
+title: "Redux Dog GIFs"
+type: "exercise"
+description: "Create a place to store all of our favorite dog GIFs."
+tags: "javascript, redux"
+ignore:
+- "redux-dog-gifs.md"

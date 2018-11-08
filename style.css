@@ -1,0 +1,10 @@
+body {
+  font-family: 'Source Sans Pro', sans-serif;
+  background-color: #e6e6e6;
+  text-align: center;
+}
+
+.puppyGif {
+  width: 200px;
+  height: 200px;
+}
